@@ -38,7 +38,7 @@ void RenderArea::paintEvent(QPaintEvent * /* event */) {
 
 void RenderArea::setLevel(qreal value) {
     m_level = value;
-    info(" set level: {}", value);
+    // info(" set level: {}", value);
     update();
 }
 
@@ -124,10 +124,10 @@ bool AudioCapture::Init(const QAudioDeviceInfo &micInfo) {
     int64_t dst_ch_layout = src_ch_layout;
 
     int src_rate = m_pFormat.sampleRate();
-    int dst_rate = 44100;
+    int dst_rate = 48000;
 
     AVSampleFormat src_sample_fmt = sample_fmt;
-    AVSampleFormat dst_sample_fmt = AV_SAMPLE_FMT_S16;
+    AVSampleFormat dst_sample_fmt = AV_SAMPLE_FMT_S16P;
 
     dst_format.chanel_layout = dst_ch_layout;
     dst_format.sample_fmt = dst_sample_fmt;
@@ -176,22 +176,22 @@ void AudioCapture::Quit() {
         audioInput = nullptr;
     }
 
-    if (m_pSwr) {
-        m_pSwr->Close();
-        delete m_pSwr;
-        m_pSwr = nullptr;
-    }
+    // if (m_pSwr) {
+    //     m_pSwr->Close();
+    //     delete m_pSwr;
+    //     m_pSwr = nullptr;
+    // }
 
-    if (src_swr_data) {
-        delete[] src_swr_data;
-        src_swr_data = nullptr;
-    }
+    // if (src_swr_data) {
+    //     // delete[] src_swr_data;
+    //     // src_swr_data = nullptr;
+    // }
 
-    if (dst_enc_data) {
-        delete[] dst_enc_data;
-        dst_enc_data = nullptr;
-        dst_enc_nb_sample_size = 0;
-    }
+    // if (dst_enc_data) {
+    //     delete[] dst_enc_data;
+    //     dst_enc_data = nullptr;
+    //     dst_enc_nb_sample_size = 0;
+    // }
 
     this->close();
 
@@ -280,7 +280,7 @@ void AudioCapture::PaceToResample(const char *data, qint64 len) {
     char *result_data = nullptr;
     int rlen = m_pSwr->SwrConvert(&result_data); //执行重采样
 
-    if (dst_enc_data) {
+    if (dst_enc_data && result_data) {
         PaceToEncode(result_data, rlen);
     }
 }

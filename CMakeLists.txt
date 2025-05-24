@@ -27,6 +27,13 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 find_package(FFmpeg MODULE REQUIRED COMPONENTS avformat avcodec avutil swscale swresample
         avdevice avfilter)
-
+target_link_directories(${PROJECT_NAME} PRIVATE install/lib
+)
 target_include_directories(${PROJECT_NAME} PRIVATE ${FFMPEG_INCLUDE_DIRS} src)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${FFMPEG_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${FFMPEG_LIBRARIES} rtmp x264)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
+        install/include  install/include/librtmp
+)
+
+target_compile_options(${PROJECT_NAME} PRIVATE -Werror=return-type)

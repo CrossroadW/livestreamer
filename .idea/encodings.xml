@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/install" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/CBaseCameraSurface.cpp" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/CBaseCameraSurface.h" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/RtmpPushLibrtmp.cpp" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/RtmpPushLibrtmp.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/aac_encoder.cpp" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/aac_encoder.h" charset="GB18030" />
     <file url="file://$PROJECT_DIR$/src/swreample.h" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/video_encodeff.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/video_encodeff.cpp" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/video_encodeff.h" charset="GB18030" />
   </component>
 </project>
